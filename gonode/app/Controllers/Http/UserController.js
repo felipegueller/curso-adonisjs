@@ -4,6 +4,16 @@
 const User = use('App/models/User')
 
 class UserController {
+  async index ({ response }) {
+    const user = await User.query().fetch()
+
+    if (user) {
+      return response.json(user)
+    } else {
+      return response.json('Não encontrado!')
+    }
+  }
+
   // ctx -> contexto da requisição
   async store ({ request }) {
     // pegando os dados dos usuários
@@ -15,7 +25,7 @@ class UserController {
     const user = await User.create(data)
 
     // retornando o usuário
-    // pela flag --api-only, passada na criação do projeto, sempre retornará um JSON
+    // pela flag --api-only, passada na criação do projeto, sempre retornará um JSONad
     return user
   }
 }
