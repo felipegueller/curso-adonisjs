@@ -6,3 +6,6 @@ const Route = use('Route')
 // criando a rota /users
 Route.post('users', 'UserController.store')
 Route.get('users', 'UserController.index')
+
+// criando a rota /sessions
+Route.post('sessions', 'SessionController.store')
